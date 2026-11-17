@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PrepAI — Smart Interview Coach</title>
+<link rel="stylesheet" href="/static/style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<header class="topbar"><a class="brand" href="/">Prep<span>AI</span></a><span class="top-note">Your AI-powered career coach</span></header>
+<main class="container">
+<section id="setup" class="panel">
+  <div class="eyebrow">YOUR PERSONAL AI INTERVIEW COACH</div>
+  <h1>Prepare with purpose.<br><span>Perform with confidence.</span></h1>
+  <p class="muted intro">Practice realistic technical interviews, get instant feedback, and receive a personalized plan to improve.</p>
+  <div class="form-grid">
+    <label>Target job role<select id="role"><option>Software Developer</option><option>Python Developer</option><option>Java Developer</option><option>Frontend Developer</option><option>Backend Developer</option><option>Data Analyst</option><option>AI/ML Engineer</option></select></label>
+    <label>Experience level<select id="level"><option>Fresher</option><option>0–2 years</option><option>2–5 years</option></select></label>
+    <label>Difficulty<select id="difficulty"><option>Beginner</option><option selected>Intermediate</option><option>Advanced</option></select></label>
+    <label>Question category<select id="category"><option>Mixed</option><option>DSA</option><option>DBMS</option><option>OOP</option><option>SQL</option><option>Operating Systems</option><option>Computer Networks</option><option>Python</option><option>Java</option></select></label>
+    <label>Number of questions<select id="count"><option value="3">3 questions</option><option value="5" selected>5 questions</option><option value="7">7 questions</option><option value="10">10 questions</option></select></label>
+    <label>Interview duration<select id="duration"><option value="10">10 minutes</option><option value="15" selected>15 minutes</option><option value="20">20 minutes</option><option value="30">30 minutes</option></select></label>
+  </div>
+  <label class="upload-label">Upload resume <span class="muted">(optional · PDF, DOCX or TXT · max 5 MB)</span><input id="resume" type="file" accept=".pdf,.docx,.txt"></label>
+  <p class="muted small">We'll use resume content to personalize questions around your skills and projects.</p>
+  <button id="startBtn" class="primary">Start my interview <span>→</span></button><p id="setupError" class="error"></p>
+  <div class="feature-row"><span>✦ Resume-aware AI</span><span>✦ Voice answers</span><span>✦ Performance analytics</span><span>✦ 7-day action plan</span></div>
+</section>
+
+<section id="interview" class="panel hidden">
+  <div class="interview-head"><div><div class="eyebrow">LIVE INTERVIEW</div><h2 id="interviewTitle">Software Developer</h2><span id="contextTag" class="tag">Mixed</span></div>
+    <div class="timer-box"><span class="muted small">TIME REMAINING</span><strong id="timer">15:00</strong><div class="progress"><i id="progressBar"></i></div><span id="progressText" class="muted small">Question 1 of 5</span></div>
+  </div>
+  <div class="question-card"><div class="question-meta"><span class="eyebrow">QUESTION <b id="qIndex">01</b></span><button id="speakBtn" class="ghost">🔊 Read question</button></div><h3 id="questionText">Preparing your question...</h3></div>
+  <label class="answer-label" for="answer">Your answer</label><textarea id="answer" rows="6" placeholder="Type your answer here, or use the microphone to speak..."></textarea>
+  <div class="actions"><div class="voice-actions"><button id="micBtn" class="secondary">🎙 Start speaking</button><span id="voiceStatus" class="muted small">Voice input availability depends on your browser.</span></div><button id="submitBtn" class="primary">Submit answer →</button></div>
+  <p id="answerError" class="error"></p><div id="feedback" class="feedback hidden"></div>
+</section>
+
+<section id="report" class="panel hidden">
+  <div class="eyebrow">YOUR INTERVIEW RESULTS</div><h1>Performance <span>report</span></h1>
+  <div class="score-panel"><div class="score-ring"><strong id="finalScore">0</strong><small>/10</small></div><div><h2 id="reportRole">Interview report</h2><p id="reportMeta" class="muted">Your performance overview</p></div></div>
+  <div class="chart-grid"><div class="chart-card"><h3>Question-wise scores</h3><canvas id="scoreChart"></canvas></div><div class="chart-card"><h3>Category performance</h3><canvas id="categoryChart"></canvas></div></div>
+  <div id="plan" class="plan-card"></div><h2 class="section-heading">Answer-by-answer review</h2><div id="reportDetails"></div>
+  <h2 class="section-heading">Previous interviews</h2><div id="historyList" class="history-list"></div>
+  <button id="newBtn" class="primary">Start another interview ↗</button>
+</section>
+</main><footer>PrepAI · Practice with purpose · AI feedback is advisory</footer>
+<script src="/static/app.js"></script>
+</body></html>
